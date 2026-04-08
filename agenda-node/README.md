@@ -1,4 +1,4 @@
-#  Agenda Node.js (CRUD Persistente)
+#  Agenda Node.js (CRUD)
 
 Este proyecto es una aplicación de agenda personal desarrollada en **Node.js** y **Express**, diseñada para ejecutarse dentro de un contenedor **Docker**. Utiliza el sistema de archivos (File System) para almacenar eventos de forma jerárquica y persistente.
 
