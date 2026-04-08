@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Agenda Personal </title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 40px; color: #333; background-color: #fdfdfd; }
+        .container { max-width: 700px; margin: auto; }
+        h1 { border-bottom: 2px solid #007bff; padding-bottom: 10px; color: #007bff; }
+        
+        /* Formulario */
+        .card { background: white; padding: 20px; border-radius: 8px; border: 1px solid #ddd; margin-bottom: 30px; }
+        input[type="text"] { width: 30%; padding: 8px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 4px; }
+        textarea { width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px; margin-bottom: 10px; }
+        button { background-color: #007bff; color: white; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer; }
+        button:hover { background-color: #0056b3; }
+
+        /* Lista de Eventos */
+        .fecha-header { background-color: #e9ecef; padding: 10px; font-weight: bold; border-radius: 4px; margin-top: 20px; }
+        .evento-item { padding: 10px 20px; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; align-items: center; }
+        .evento-titulo { color: #555; }
+        .btn-eliminar { color: #dc3545; text-decoration: none; font-size: 0.9em; border: 1px solid #dc3545; padding: 2px 8px; border-radius: 4px; }
+        .btn-eliminar:hover { background-color: #dc3545; color: white; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Agenda Personal </h1>
+        
+        <div class="card">
+            <form action="/crear" method="POST">
+                <input type="text" name="fecha" placeholder="Fecha (AAAA-MM-DD)" required>
+                <input type="text" name="hora" placeholder="Hora (HH-MM)" required>
+                <input type="text" name="titulo" placeholder="Título del evento" required style="width: 95%;">
+                <textarea name="descripcion" placeholder="Descripción del evento..." rows="3"></textarea>
+                <button type="submit">Añadir a la Agenda</button>
+            </form>
+        </div>
+
+        <h3>Eventos Guardados</h3>
+        
+        <% Object.keys(agenda).sort().forEach(fecha => { %>
+            <div class="fecha-header"> Fecha: <%= fecha %></div>
+            <% agenda[fecha].forEach(ev => { %>
+                <div class="evento-item">
+                    <span class="evento-titulo"><strong><%= ev.hora %></strong> — <%= ev.titulo %></span>
+                    <a href="/eliminar/<%= fecha %>/<%= ev.hora %>" class="btn-eliminar">Eliminar</a>
+                </div>
+            <% }) %>
+        <% }) %>
+
+        <% if (Object.keys(agenda).length === 0) { %>
+            <p style="color: #888;">No hay eventos registrados aún.</p>
+        <% } %>
+    </div>
+</body>
+</html>
