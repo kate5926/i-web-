@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # SISACAD — Frontend de Constancia de Matricula
 
 Frontend desarrollado con **Vue 3 + Vite** que consume una API REST de Django (backend en Vercel) y muestra la constancia de matricula de un estudiante segun su CUI.
@@ -714,3 +715,6 @@ GET https://sisacad-enrollments-backend.vercel.app/restful/enrollment-certificat
 
 ---
 
+=======
+# i-web-
+>>>>>>> fb4e37e9ef41b36b2c8b751848472d1c9968b64d
